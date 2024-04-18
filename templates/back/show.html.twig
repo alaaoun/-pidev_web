@@ -1,0 +1,48 @@
+{% extends 'Back.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>User</h1>
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ user.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ user.nom }}</td>
+                </tr>
+                <tr>
+                    <th>Mail</th>
+                    <td>{{ user.mail }}</td>
+                </tr>
+                <tr>
+                    <th>Num_tel</th>
+                    <td>{{ user.numTel }}</td>
+                </tr>
+                <tr>
+                    <th>Adresse</th>
+                    <td>{{ user.adresse }}</td>
+                </tr>
+                <tr>
+                    <th>Mdp</th>
+                    <td>{{ user.mdp }}</td>
+                </tr>
+                <tr>
+                    <th>Role_id</th>
+<td>{{ user.role.roleName }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('app_back_index') }}" class="btn btn-primary">Back to List</a>
+
+        <a href="{{ path('app_back_edit', {'id': user.id}) }}" class="btn btn-info">Edit</a>
+
+        {{ include('back/_delete_form.html.twig') }}
+    </div>
+{% endblock %}
