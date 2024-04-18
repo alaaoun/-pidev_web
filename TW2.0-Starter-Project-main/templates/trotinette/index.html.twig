@@ -1,0 +1,58 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+
+            <!-- Table Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+
+
+                    <div class="col-sm-12 col-xl-8">
+                    <a class="btn btn-success" href="{{ path('trotinette_add')}}" >Ajouter Trotinette</a>
+                    <p>.</p>
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Liste Trotinette</h6>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Vitesse</th>
+                                        <th scope="col">Charge</th>
+                                        <th scope="col">Couleur</th>
+                                        <th scope="col">Disponibilité</th>
+                                        <th scope="col">Station</th>
+                                        <th scope="col">Modifier</th>
+                                        <th scope="col">Supprimer</th>
+                                    </tr>
+                                </thead>
+                                {% for element in c %}
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">{{ element.idTrotinette}}</th>
+                                        <td>{{ element.vitesse}}</td>
+                                        <td>{{ element.charge}}</td>
+                                        <td>{{ element.couleur}}</td>
+                                        <td>{{ element.dispo}}</td>
+                                        <td>{{ element.idStation.name}}</td>
+                                        <td>
+                                        <a class="btn btn-outline-success" href="{{ path('trotinette_update' , {'id': element.idTrotinette})}}" >Modifier</a>
+                                        </td>
+                                        <td>
+                                        <a class="btn btn-outline-danger" href="{{ path('deleteT' , {'id': element.idTrotinette})}}" >Supprimer</a>
+                                        </td>
+
+                                    </tr>
+                                    </tr>
+                                </tbody>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+            <!-- Table End -->
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-secondary rounded h-100 p-4">
+                    <h6 class="mb-4">Ajouter Trottinette</h6>
+                    <form method="post">
+                        {{ form_start(form) }}
+                                                {{ form_row(form.vitesse, {'attr': {'class': 'form-control mb-3', 'placeholder': 'Vitesse'}}) }}
+                        {{ form_row(form.charge, {'attr': {'class': 'form-control mb-3', 'placeholder': 'Charge'}}) }}
+                        {{ form_row(form.couleur, {'attr': {'class': 'form-control mb-3', 'placeholder': 'Couleur'}}) }}
+
+                        {{ form_row(form.dispo, {'attr': {'class': 'form-control mb-3', 'placeholder': 'oui/non'}}) }}
+                        {{ form_row(form.idStation, {'attr': {'class': 'form-control mb-3', 'placeholder': 'Transmission'}}) }}
+                   
+                        {{ form_end(form) }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
