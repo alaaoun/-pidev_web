@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+<title>Edit Reservation</title>
+
+{% block body %}
+    <h1>Edit Reservation</h1>
+
+    {{ include('resrvation/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_resrvation_index') }}">back to list</a>
+
+{% endblock %}
