@@ -39,6 +39,22 @@ class Reservation
 
     #[ORM\Column(nullable: true)]
     private ?float $mtotal = null;
+    
+    #[ORM\Column(length: 25, nullable: true)]
+    private ?string $status = null;
+
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): self
+    {
+        $this->status = $status;
+        return $this;
+    }
+    
 
     public function getId(): ?int
     {
