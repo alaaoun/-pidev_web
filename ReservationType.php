@@ -22,6 +22,7 @@ class ReservationType extends AbstractType
             ->add('impot')
             ->add('total')
             ->add('mtotal')
+            ->add('status',HiddenType::class)
             ->add('datersv', DateType::class, [
                 'widget' => 'single_text', // This tells Symfony to use the HTML5 date input type
                 'attr' => ['class' => 'form-control', 'placeholder' => 'YYYY-MM-DD'],
@@ -32,7 +33,7 @@ class ReservationType extends AbstractType
                 'input'  => 'string',       // Stores time as a string. Change to 'datetime' if you use a \DateTime object.
                 'attr' => ['class' => 'form-control timepicker', 'placeholder' => 'HH:MM'],
             ]);
-            // Ne pas ajouter ici les champs pour impot, total, et mtotal
+          
         ;
     }
 
