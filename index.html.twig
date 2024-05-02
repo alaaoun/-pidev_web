@@ -1,0 +1,105 @@
+{% extends 'dashboard/base.html.twig' %}
+
+{% block title %}Announcement{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
+ <style>
+        .table {
+            border-collapse: collapse; /* Adds a white border to the table */
+            background-color: white;
+             width: 100%;
+        }
+         .table, .table th, .table td {
+            border: 2px solid grey; /* Adds a grey border to the table, th, and td elements */
+        }
+        .table thead th {
+            background-color: #D3D3D3; /* Sets a gray background for the table header */
+        }
+        .table img {
+            border-radius: 20px;
+            display: block; /* Changes display to block */
+            margin: auto;
+        }
+
+
+
+/* Style pour le bouton "Edit" */
+.edit-btn {
+    background-color: #FFA500; /* couleur de fond pour le bouton */
+    color: white; /* couleur du texte */
+    border: none; /* enlever la bordure */
+    padding: 5px 10px; /* espace à l'intérieur du bouton */
+    border-radius: 5px; /* arrondir les coins */
+    cursor: pointer; /* changer le curseur au survol */
+    margin-bottom: 8px; /* espacement à droite */
+    text-decoration: none; /* enlever le soulignement */
+}
+
+/* Style pour le bouton "Delete" */
+.delete-btn {
+    background-color: #dc3545; /* couleur de fond pour indiquer danger */
+    color: white; /* couleur du texte */
+    border: none; /* enlever la bordure */
+    padding: 5px 10px; /* espace à l'intérieur du bouton */
+    border-radius: 5px; /* arrondir les coins */
+    cursor: pointer; /* changer le curseur au survol */
+    text-decoration: none; /* enlever le soulignement */
+}
+
+
+    </style>
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Announcement Management</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for announcement in announcements %}
+            <tr>
+                <td>{{ announcement.id }}</td>
+                <td>{{ announcement.title }}</td>
+                <td>{{ announcement.description }}</td>
+                <td>
+                    {% if announcement.imageName %}
+                        <img src="{{ asset('images/announcements/' ~ announcement.imageName) }}" alt="Image for {{ announcement.title }}" style="height: 100px;">
+                    {% else %}
+                        No image
+                    {% endif %}
+                </td>
+                <td>{{ announcement.createdAt ? announcement.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ announcement.updatedAt ? announcement.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+           <td>
+    <button onclick="window.location.href='{{ path('app_announcement_edit', {'id': announcement.id}) }}'" class="edit-btn">Edit</button>
+    <form method="post" action="{{ path('app_announcement_delete', {'id': announcement.id}) }}" class="delete-form" onsubmit="return confirm('Are you sure you want to delete this item?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ announcement.id) }}">
+        <button type="submit" class="delete-btn">Delete</button>
+    </form>
+</td>
+
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_announcement_new') }}">Create new</a>
+  </div>
+{% endblock %}
