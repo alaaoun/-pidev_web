@@ -1,42 +1,58 @@
 <!DOCTYPE html>
 
-<title>Announcement</title>
+<title>Reservation</title>
 
 {% block body %}
-    <h1>Announcement</h1>
+    <h1>Reservation</h1>
 
     <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ announcement.id }}</td>
+                <td>{{ reservation.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
-                <td>{{ announcement.title }}</td>
+                <th>Model</th>
+                <td>{{ reservation.model }}</td>
             </tr>
             <tr>
-                <th>Description</th>
-                <td>{{ announcement.description }}</td>
+                <th>Qte</th>
+                <td>{{ reservation.qte }}</td>
             </tr>
             <tr>
-                <th>ImageName</th>
-                <td>{{ announcement.imageName }}</td>
+                <th>Prix</th>
+                <td>{{ reservation.prix }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
-                <td>{{ announcement.createdAt ? announcement.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Datersv</th>
+                <td>{{ reservation.datersv|date('Y-m-d') }}/td>
             </tr>
             <tr>
-                <th>UpdatedAt</th>
-                <td>{{ announcement.updatedAt ? announcement.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Heurersv</th>
+                <td>{{ reservation.heurersv }}</td>
+            </tr>
+            <tr>
+                <th>Periode</th>
+                <td>{{ reservation.periode }}</td>
+            </tr>
+            <tr>
+                <th>Impot</th>
+                <td>{{ reservation.impot }}</td>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <td>{{ reservation.total }}</td>
+            </tr>
+            <tr>
+                <th>Mtotal</th>
+                <td>{{ reservation.mtotal }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_announcement_index') }}">back to list</a>
+    <a href="{{ path('app_resrvation_index') }}">back to list</a>
 
-    <a href="{{ path('app_announcement_edit', {'id': announcement.id}) }}">edit</a>
+    <a href="{{ path('app_resrvation_edit', {'id': reservation.id}) }}">edit</a>
 
-    {{ include('announcement/_delete_form.html.twig') }}
+    {{ include('resrvation/_delete_form.html.twig') }}
 {% endblock %}
