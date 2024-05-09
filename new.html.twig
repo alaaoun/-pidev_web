@@ -1,44 +1,16 @@
-{% extends 'Back.html.twig' %}
+
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Offer index{% endblock %}
+
+
 
 {% block body %}
-    <h1 class="form-title">Create New Admin</h1>
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Offer Management</h1>
+<h1>Create new Offer</h1>
 
-    <div class="container">
-        {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'registration-form'}}) }}
-            <div class="form-group">
-                {{ form_label(form.nom) }}
-                {{ form_widget(form.nom) }}
-                {{ form_errors(form.nom) }}
-            </div>
-            
-            <div class="form-group">
-                {{ form_label(form.mail) }}
-                {{ form_widget(form.mail) }}
-                {{ form_errors(form.mail) }}
-            </div>
-            
-            <div class="form-group">
-                {{ form_label(form.numTel) }}
-                {{ form_widget(form.numTel) }}
-                {{ form_errors(form.numTel) }}
-            </div>
-            
-            <div class="form-group">
-                {{ form_label(form.adresse) }}
-                {{ form_widget(form.adresse) }}
-                {{ form_errors(form.adresse) }}
-            </div>
-            
-            <div class="form-group">
-                {{ form_label(form.mdp) }}
-                {{ form_widget(form.mdp) }}
-                {{ form_errors(form.mdp) }}
-            </div>
-            
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Register</button>
-                <a href="{{ path('app_back_index') }}" class="back-link">Back to List</a>
-            </div>
-        {{ form_end(form) }}
-    </div>
+    {{ include('offer/_form.html.twig') }}
+
+    <a href="{{ path('app_offer_index') }}">back to li
 {% endblock %}

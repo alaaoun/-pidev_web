@@ -1,49 +1,38 @@
-{% extends 'Back.html.twig' %}
+<!DOCTYPE html>
 
-{% block title %}User{% endblock %}
+<title>Offer</title>
 
 {% block body %}
-    <div class="container">
-        <h1>USER</h1>
+    <h1>Offer</h1>
 
-        <table class="table">
-            <tbody>
-                <tr>
-                    <th>Id</th>
-                    <td>{{ user.id }}</td>
-                </tr>
-                <tr>
-                    <th>Nom</th>
-                    <td>{{ user.nom }}</td>
-                </tr>
-                <tr>
-                    <th>Mail</th>
-                    <td>{{ user.mail }}</td>
-                </tr>
-                <tr>
-                    <th>Num_tel</th>
-                    <td>{{ user.numTel }}</td>
-                </tr>
-                <tr>
-                    <th>Adresse</th>
-                    <td>{{ user.adresse }}</td>
-                </tr>
-                <tr>
-                    <th>Mdp</th>
-                    <td>{{ user.mdp }}</td>
-                </tr>
-                <tr>
-                    <th>Role</th>
-<td>{{ user.role.roleName }}</td>
-                </tr>
-            </tbody>
-        </table>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ offer.id }}</td>
+            </tr>
+            <tr>
+                <th>Details</th>
+                <td>{{ offer.details }}</td>
+            </tr>
+            <tr>
+                <th>StatusOffre</th>
+                <td>{{ offer.statusOffre }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ offer.createdAt ? offer.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ offer.updatedAt ? offer.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
 
-        <a href="{{ path('app_back_index') }}" class="btn btn-primary">Back to List</a>
+    <a href="{{ path('app_offer_index') }}">back to list</a>
 
-        <a href="{{ path('app_back_edit', {'id': user.id}) }}" class="btn btn-info">Edit</a>
+    <a href="{{ path('app_offer_edit', {'id': offer.id}) }}">edit</a>
 
-        {{ include('back/_delete_form.html.twig') }}
-<a href="{{ path('download_form_data', {'id': user.id}) }}" class="btn btn-secondary">Download PDF</a>
-    </div>
+    {{ include('offer/_delete_form.html.twig') }}
 {% endblock %}
