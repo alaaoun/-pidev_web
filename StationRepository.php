@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Entity;
+namespace App\Repository;
 
 use App\Entity\Station;
+use App\Entity\Trotinette;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -20,7 +21,22 @@ class StationRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Station::class);
     }
+    public function findStationWithMaxTrotinettes()
+    {
+        $stations = $this->findAll();
+        $maxStation = null;
+        $maxCount = 0;
 
+        foreach ($stations as $station) {
+            $trotinettes = $station->getTrotinettes()->count();
+            if ($trotinettes > $maxCount) {
+                $maxCount = $trotinettes;
+                $maxStation = $station;
+            }
+        }
+
+        return $maxStation;
+    }
 //    /**
 //     * @return Station[] Returns an array of Station objects
 //     */
