@@ -1,38 +1,58 @@
 <!DOCTYPE html>
 
-<title>Offer</title>
+<title>Reservation</title>
 
 {% block body %}
-    <h1>Offer</h1>
+    <h1>Reservation</h1>
 
     <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ offer.id }}</td>
+                <td>{{ reservation.id }}</td>
             </tr>
             <tr>
-                <th>Details</th>
-                <td>{{ offer.details }}</td>
+                <th>Model</th>
+                <td>{{ reservation.model }}</td>
             </tr>
             <tr>
-                <th>StatusOffre</th>
-                <td>{{ offer.statusOffre }}</td>
+                <th>Qte</th>
+                <td>{{ reservation.qte }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
-                <td>{{ offer.createdAt ? offer.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Prix</th>
+                <td>{{ reservation.prix }}</td>
             </tr>
             <tr>
-                <th>UpdatedAt</th>
-                <td>{{ offer.updatedAt ? offer.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Datersv</th>
+                <td>{{ reservation.datersv|date('Y-m-d') }}/td>
+            </tr>
+            <tr>
+                <th>Heurersv</th>
+                <td>{{ reservation.heurersv }}</td>
+            </tr>
+            <tr>
+                <th>Periode</th>
+                <td>{{ reservation.periode }}</td>
+            </tr>
+            <tr>
+                <th>Impot</th>
+                <td>{{ reservation.impot }}</td>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <td>{{ reservation.total }}</td>
+            </tr>
+            <tr>
+                <th>Mtotal</th>
+                <td>{{ reservation.mtotal }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_offer_index') }}">back to list</a>
+    <a href="{{ path('app_resrvation_index') }}">back to list</a>
 
-    <a href="{{ path('app_offer_edit', {'id': offer.id}) }}">edit</a>
+    <a href="{{ path('app_resrvation_edit', {'id': reservation.id}) }}">edit</a>
 
-    {{ include('offer/_delete_form.html.twig') }}
+    {{ include('resrvation/_delete_form.html.twig') }}
 {% endblock %}
